@@ -31,13 +31,15 @@
     "watchify": "^2.1.1"
   },
   "scripts": {
-    "test": "tape test/*.js",
+    "build-js": "browserify app/browser.js -o app/static/bundle.js",
+    "build-html": "html-inline app/static/index.html > app/static/bundle.html",
+    "build": "npm run build-js && npm run build-html",
     "watch-js": "watchify app/browser.js -dv -o app/static/bundle.js",
-    "watch": "npm run watch-js & onchange app/static/index.html app/static/*.css -- npm run build-html",
-    "build": "browserify app/browser.js -o app/static/bundle.js",
-    "release": "npm run build && html-inline app/static/index.html | hyperboot release -n keyboot",
+    "watch": "npm run watch-js & onchange app/static/* -- npm run build-html",
+    "start": "hyperboot server",
     "start-dev": "ecstatic app/static",
-    "start": "node bin/cmd.js server"
+    "dev": "npm run watch-js & npm run start-dev --",
+    "release": "npm run build && hyperboot release app/static/bundle.html -n 'keyboot example'"
   },
   "repository": {
     "type": "git",
