@@ -115,6 +115,20 @@ $ npm install -g keyboot
 or you can fetch a pre-built version of the browser library with
 [browserify cdn](http://wzrd.in):
 
+# develop
+
+After installing, do:
+
+```
+$ npm run dev
+```
+
+or if you need to specify a port do:
+
+```
+$ npm run dev -- --port 9000
+```
+
 [http://wzrd.in/standalone/keyboot@latest](http://wzrd.in/standalone/keyboot@latest)
 
 # license
