@@ -21,10 +21,10 @@ function KB (href, opts) {
     };
     
     this.frame = createIframe(this.href, function (frame) {
-        var hrpc = RPC(window, frame.contentWindow, href, {
+        var hrpc = RPC(window, frame.contentWindow, self.href, {
             hello: function (origin, cb) {
                 cb(location.protocol + '//' + location.host);
-                self.rpc = RPC(window, frame.contentWindow, href, methods);
+                self.rpc = RPC(window, frame.contentWindow, self.href, methods);
                 self.rpc.call('request', { permissions: perms });
             }
         });
